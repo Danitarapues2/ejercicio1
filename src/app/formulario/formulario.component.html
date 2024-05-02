@@ -1,21 +1,28 @@
 <p>Formulario</p>
-<form (ngSubmit)="guardarDatos()">
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+
+<form (ngSubmit)="guardarDatos()" #formulario="ngForm">
+
+    <div class="p-field">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" pInputText required>
     </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" [(ngModel)]="email" required>
+
+    <div class="p-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" pInputText required>
     </div>
-    <div>
-      <label for="contraseña">Contraseña:</label>
-      <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required>
+
+    <div class="p-field">
+        <label for="contraseña">Contraseña:</label>
+        <p-password [ngModel]="contrasena" name="contrasena" [feedback]="true" [toggleMask]="true" required
+            (ngModelChange)="contrasena = $event"></p-password>
     </div>
-    <div>
-      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-      <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaNacimiento" required>
+
+    <div class="p-field">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaNacimiento" pInputText>
+        <div *ngIf="!fechaNacimiento" style="color: red;">¡Por favor, introduce tu fecha de nacimiento!</div>
     </div>
-    <p-button label="Success" severity="success" type="submit"></p-button>
-  </form>
-  
+    <button pButton type="submit" label="Success" icon="pi pi-check" class="p-button-success"
+        [disabled]="formulario.invalid"></button>
+</form>

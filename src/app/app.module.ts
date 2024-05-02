@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
+import { PasswordModule } from 'primeng/password';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    PasswordModule,
+    MessagesModule
   ],
   providers: [
     provideClientHydration()
